@@ -1,8 +1,8 @@
-# DeepOps Burn-In Test (BIT)
+# HPL Burn-In Test (BIT) 2.0
 
 ## Overview
 
-This repository contains a set of scripts and configuration to burnin and validate the performance of DGX A100 clusters. The test will run a variety of containerized multi-node workloads (currently only HPL, NCCL is next).  The tests can also be run on generic GPU clusters, but specific configuration and interpretation of the results is left to the user.
+This repository contains a set of scripts and configuration to burnin and validate the performance of DGX A100/H100 SuperPOD/BasePODclusters. The test will run a variety of containerized multi-node workloads (currently only HPL, NCCL is next).  The tests can also be run on generic GPU clusters, but specific configuration and interpretation of the results is left to the user.
 
 The test are designed to be repeatedly run with different nodes and confirm that performance is consistent at each node count.  When tests run slowly or incorrectly, the nodes affected are reported.  Through continued system stress subtle and no-so-subtle hardware and system issues can be detected.  
 
@@ -16,7 +16,7 @@ validation tests back-to-back for an extended period of time.
 
 ## Requirements
 
-- It is assumed that these tests are run under a DeepOps configured cluster with Slurm, Enroot, and Pyxis.
+- It is assumed that these tests are run under a Bright Cluster Manager/ Base Command Manager configured cluster with Slurm, Enroot, and Pyxis.
 - A shared filesystem across all the compute nodes.
 
 Note: Singularity should also work, but that code path has been minimally tested.
@@ -25,16 +25,11 @@ Note: Singularity should also work, but that code path has been minimally tested
 
 ## Getting started
 
-Either copy, or just reclone, the DeepOps repository to a directory on a shared filesystem owned by the user (non-root) under which the tests will be run.
-
-```
-git clone https://github.com/NVIDIA/deepops.git
-cd deepops/workloads/bit/hpl
-```
+Either copy, or just reclone, this epository to a directory on a shared filesystem owned by the user (non-root) under which the tests will be run.
 
 ## Setup Authentication to Access HPL container
 
-The NGC HPC Benchmarks container is used to run HPL.  
+The NGC HPC Benchmarks 23.5 container is used to run HPL.  
 
 https://ngc.nvidia.com/catalog/containers/nvidia:hpc-benchmarks
 
@@ -162,7 +157,7 @@ To rerun the verification: /home/juser/deepops/workloads/bit/hpl/verify_hpl_expe
 
 ```
 
-All the variables shown can be modified, but for the default case running from DeepOps, this should not be necessary.
+All the variables shown can be modified but this should not be necessary.
 
 At the end of each job, a result will be reported that says if the individual job passed or not.
 
@@ -189,11 +184,9 @@ Experiments are verified when all jobs are complete.  See the file verify_result
 ## Choosing the right system
 Several different DGX system configurations are supported.  These include:
 
-* DGX-1V 16GB    - syscfg-dgx1v-16gb.sh
-* DGX-1V 32GB    - syscfg-dgx1v-32gb.sh
-* DGX2           - syscfg-dgx2.sh
 * DGX A100 40GB  - syscfg-dgxa100-40gb.sh
 * DGX A100 80GB  - syscfg-dgxa100-80gb.sh
+  DGX H100 80GB  - syscfg-dgxh100-80gb.sh
 
 Note: The network topology of the DGX A100 40GB can vary depending on if you the node has the optional additional network card added.  Please edit the configuration file to match your node configuration.
 
