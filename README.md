@@ -61,6 +61,10 @@ export SINGULARITY_DOCKER_PASSWORD=<NGC_API_KEY>
 
 Set these variables in the appropriate system config file (ex: syscfg-dgxa100-80gb.sh)
 
+## Saving Containers to local .sqsh files
+
+In order to download a container locally to a .sqsh file do:
+enroot import docker://nvcr.io/nvidia/<container>
 
 ## Basic Launch Command
 
