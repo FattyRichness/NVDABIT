@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository contains a set of scripts and configuration to burnin and validate the performance of DGX A100/H100 SuperPOD/BasePODclusters. The test will run a variety of containerized multi-node workloads (currently only HPL, NCCL is next).  The tests can also be run on generic GPU clusters, but specific configuration and interpretation of the results is left to the user.
+This repository contains a set of scripts and configuration to burnin and validate the performance of DGX A100/H100 SuperPOD/BasePOD clusters. The test will run a variety of containerized multi-node workloads (currently only HPL, NCCL is next).  The tests can also be run on generic GPU clusters, but specific configuration and interpretation of the results is left to the user.
 
 The test are designed to be repeatedly run with different nodes and confirm that performance is consistent at each node count.  When tests run slowly or incorrectly, the nodes affected are reported.  Through continued system stress subtle and no-so-subtle hardware and system issues can be detected.  
 
