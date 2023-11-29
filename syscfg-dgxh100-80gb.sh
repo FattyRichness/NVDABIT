@@ -1,11 +1,12 @@
 CPU_CORES_PER_RANK=8
 
 ### For HPL
-GPU_CLOCK="1593,1275"
+# The H100 should run the HPL test with automatic frequency management.
+GPU_CLOCK=""
 
 ## Use this setting for the DGX H100 OSFP Ports
 ## This is default on the DGX H100 80GB nodes.
-UCX_NET_DEVICES="mlx5_0:mlx5_1:mlx5_2:mlx5_3:mlx5_6:mlx5_7:mlx5_8:mlx5_9"
+UCX_NET_DEVICES="mlx5_0:mlx5_3:mlx5_4:mlx5_5:mlx5_6:mlx5_9:mlx5_10:mlx5_11"
 UCX_TLS=rc
 #UCX_TLS=self,cma,rc,mm
 
@@ -14,7 +15,7 @@ export MONITOR_GPU=1
 export TEST_SYSTEM_PARAMS=1
 export TEST_LOOPS=1
 export GPU_CLOCK_WARNING=$(echo ${GPU_CLOCK} | cut -f2 -d,)
-export GPU_POWER_WARNING=400
+export GPU_POWER_WARNING=700
 export GPU_PCIE_GEN_WARNING=4
 export GPU_PCIE_WIDTH_WARNING=16
 
@@ -45,7 +46,7 @@ export NVSHMEM_ENABLE_NIC_PE_MAPPING=1
 #export HPL_USE_NVSHMEM=0
 
 # Use the following to determine if a rail is preventing HPL from running.  Specify the adapter card of the rail you want to test.  You can test mulitple rails
-export NVSHMEM_HCA_LIST=mlx5_0:1,mlx5_1:1,mlx5_2:1,mlx5_3:1,mlx5_6:1,mlx5_8:1,mlx5_9:1
+export NVSHMEM_HCA_LIST=mlx5_0:1,mlx5_3:1,mlx5_4:1,mlx5_5:1,mlx5_6:1,mlx5_9:1,mlx5_10:1,mlx5_11:1
 
 # #Depending on driver version, you may need to uncomment the following line
 # export LD_LIBRARY_PATH="/usr/local/cuda/compat:$LD_LIBRARY_PATH
