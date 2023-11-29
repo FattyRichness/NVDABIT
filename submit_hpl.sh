@@ -106,8 +106,10 @@ MOUNT=$(pwd):/datfiles
 
 # nvidia-smi must be setup for setting clocks
 
-SUDOCLOCKS=${SUDOCLOCKS:-"sudo"}
-srun -N ${NNODES} -n${NNODES} ${SUDOCLOCKS} nvidia-smi -lgc ${NV_GPUCLOCK}
+if  [ ! -z ${NV_GPUCLOCK} ]; then
+    SUDOCLOCKS=${SUDOCLOCKS:-"sudo"}
+    srun -N ${NNODES} -n${NNODES} ${SUDOCLOCKS} nvidia-smi -lgc ${NV_GPUCLOCK}
+fi
 
 #Source the variables from SYSCFG
 #source /home/bcm/hpl/syscfg-dgxa100-80gb.sh 

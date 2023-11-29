@@ -158,7 +158,7 @@ elif [ x"${system}" == x"dgxa100_80G" ]; then
     export GPUMEM=80
 elif [ x"${system}" == x"dgxh100_80G" ]; then
     export gpus_per_node=8
-    export SYSCFG=syscfg-dgxh100.sh
+    export SYSCFG=syscfg-dgxh100-80gb.sh
     export GPUMEM=80
 
 else
